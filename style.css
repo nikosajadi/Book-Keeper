@@ -58,10 +58,9 @@ a {
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
-  
 }
- a:link,
- a:visited {
+a:link,
+a:visited {
   color: white;
   /* to remove the underline  */
   text-decoration: none;
@@ -69,32 +68,34 @@ a {
  
  a:hover,
  a:active {
-  text-decoration: underline;
+   text-decoration: underline;
  }
+ 
 
  .fa-times {
   float: right;
   cursor: pointer;
   z-index: 2;
- }
+}
 
- .name {
-   margin-top: 20px;
-   margin-right: 20px;
- }
- .name img {
+.name {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.name img {
   height: 20px;
   width: 20px;
   vertical-align: sub;
   margin-right: 5px;
- }
+}
 /*  Modal */
 
 
+/* Modal */
 .modal-container {
-   /* overlay */
   background: rgba(0, 0, 0, 0.6);
-  display: none;
+  display:none;
   position: fixed;
   top: 0;
   left: 0;
@@ -130,7 +131,7 @@ a {
  }
  .close-icon {
   float: right;
-  color: rebeccapurple;;
+  color: rgb(236, 220, 50);
   font-size: 24px;
   position: relative;
   top: 13px;
@@ -138,8 +139,8 @@ a {
   cursor: pointer;
 }
 .modal-header {
-  background: var(--primary-color);
-  color: rebeccapurple;
+  background: #b87a16;
+  color: rgb(236, 220, 50);
   padding: 15px;
 }
 h3 {
