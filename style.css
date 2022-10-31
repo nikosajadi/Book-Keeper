@@ -87,6 +87,53 @@ a {
   vertical-align: sub;
   margin-right: 5px;
  }
+/*  Modal */
+
+
+.modal-container {
+   /* overlay */
+  background: rgba(0, 0, 0, 0.6);
+  /* display: none; */
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+ .show-modal {
+  display: flex;
+  align-items: center;
+  /* this allow us to center our modal vertically & hotizontally within the page */
+  justify-content: center;
+}
+ .modal {
+  background: #fff;
+  /* vertical & horizontal = 0 , 10px all the way around */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  /* in order for it  to look good on mobile devices*/
+  max-width: 95%;
+  /* in order for it to look good on dexktop and never be 500px for desktop */
+  width: 500px;
+  /* i made it five secounds just to show more clearly what' happend */
+  animation: modalopen 1s;
+ }
+
+ @keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+ }
+ .modal-header {
+    
+ }
+
+
+
  @media screen and (max-width: 600px) {
   .container {
     /* Colum allows objects to go top to botton instead of left to right */
