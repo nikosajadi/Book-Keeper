@@ -59,13 +59,14 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
+/* LOVE */
 a:link,
 a:visited {
   color: white;
   /* to remove the underline  */
   text-decoration: none;
  }
- 
+ /* hate= H-A */
  a:hover,
  a:active {
    text-decoration: underline;
