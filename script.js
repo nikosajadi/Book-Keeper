@@ -17,3 +17,6 @@ function showModal() {
 modalShow.addEventListener('click', showModal);
 //arrow function instead of creatin a separate function
 modalClose.addEventListener ('click', ()=>modalClose.classList.remove);
+// we want to be able to hide the model by clicking anywhere outside of the modal
+//if the target is this model, then we want to remove the show modal class  and unless we dont want do any things
+window.addEventListener ('click', (e)=> (e.target === modal ? modal.classList.remove ('show-modal') : false));
