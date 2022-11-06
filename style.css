@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&family=Ibarra+Real+Nova:ital@1&family=Karla&family=Lato:ital,wght@0,400;1,100&family=Nunito&display=swap');
 :root {
   /* thats the benefit of CSX variables */
-  --primary-color: #6170d5;
+  --primary-color: #484f80;
   --border-radius: 25px;
 }
 

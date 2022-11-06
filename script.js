@@ -13,6 +13,25 @@ function showModal() {
     websiteNameEL.focus();
 }
 
+//validate Form
+function validate(nameValue,urlValue) {
+    const exprssion = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+    const regex = new RegExp(exprssion);
+    if (!nameValue || !urlValue) {
+        alert('Pleas submit values for both fields');
+        return false;
+    }
+    // if (urlValue.match(regex)){
+    //     alert('match');  
+    // }
+    if (!urlValue.match(regex)) {
+        alert('please provide a valid web address');
+        return false;
+    }
+    //Valid
+    return true;
+}
+
 // Modal Event Listeners
 modalShow.addEventListener('click', showModal);
 //arrow function instead of creatin a separate function
@@ -32,9 +51,10 @@ function storeBookmark(e) {
     if (!urlValue.includes('http://', 'https://')) {
         urlValue = `http://${urlValue}`;
     }
-
-
     console.log(nameValue,urlValue); 
+    if (!validate(nameValue, urlValue)) {
+        return false;
+    };
 }
 
 
