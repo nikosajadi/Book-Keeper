@@ -6,6 +6,9 @@ const bookmarkContainer = document.getElementById('bookmark-container');
 const websiteNameEL = document.getElementById('website-name');
 const websiteUrlEl = document.getElementById('website-url');
 
+//Local storage :stored data saved across browser sessions
+let bookmarks = [];
+
 //show modal, Focus on input field
 //that is going to add back our show modal Class
 function showModal() {
@@ -50,15 +53,29 @@ function storeBookmark(e) {
     // we dont want to have people have to enter HTP slash
     if (!urlValue.includes('http://', 'https://')) {
         urlValue = `http://${urlValue}`;
-    }
-    console.log(nameValue,urlValue); 
+    } 
+    // if True we want to skip over this part
     if (!validate(nameValue, urlValue)) {
         return false;
     };
-}
+    const bookmark = {
+        name: nameValue,
+        url: urlValue,
+    };
+    // we gonna pas that object to our arrey
+    bookmarks.push(bookmark);
+    //we can see that every things here became the string
+    console.log(JSON.stringify(bookmarks));
+    // The Json.stringify() method converts a javaScript object or VaLUE to JSON string on web server
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    bookmarks.reset();
+    websiteNameEL.focus();
+};
 
 
 
 //handing our input data we can use 'submit event' on the form element 
  //event Listeners
  bookmarkForm.addEventListener('submit', storeBookmark);
+
+ 
