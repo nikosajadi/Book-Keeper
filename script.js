@@ -35,6 +35,26 @@ function validate(nameValue,urlValue) {
     return true;
 }
 
+//Fetch Bookmarks  
+ // The JSON.parse() method parses a JSON string, it takses a Jason string and constructs it back into a javaScript object.
+function fetchBookmarks (){
+    // the first part we should get bookmark from localStorage if available
+    if (localStorage.getItem('bookmark')) {
+        bookmarks = JSON.parse(localStorage.getItem('bookmark'));
+    } else {
+        //creat bookmark array in LocalStorage
+        bookmarks =[
+            {
+                name : 'Jacinto Design',
+                url: 'https://jacinto.design',
+            },
+        ];
+        localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+     }
+    console.log(bookmarks)
+}
+
+
 // Modal Event Listeners
 modalShow.addEventListener('click', showModal);
 //arrow function instead of creatin a separate function
@@ -65,9 +85,10 @@ function storeBookmark(e) {
     // we gonna pas that object to our arrey
     bookmarks.push(bookmark);
     //we can see that every things here became the string
-    console.log(JSON.stringify(bookmarks));
+    // console.log(JSON.stringify(bookmarks));
     // The Json.stringify() method converts a javaScript object or VaLUE to JSON string on web server
     localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    fetchBookmarks();
     bookmarks.reset();
     websiteNameEL.focus();
 };
@@ -77,5 +98,7 @@ function storeBookmark(e) {
 //handing our input data we can use 'submit event' on the form element 
  //event Listeners
  bookmarkForm.addEventListener('submit', storeBookmark);
+ // onload, Fetch bookmarks becuse when you come back to the page, you want to be able to take whatever was in local storage and populate in bookmarks array whit that. 
+ fetchBookmarks();
 
  
