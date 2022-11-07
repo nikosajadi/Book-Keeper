@@ -35,6 +35,34 @@ function validate(nameValue,urlValue) {
     return true;
 }
 
+//buildBookmarks DOM
+function buildBookmarks(){
+  // Build Item List
+  bookmarks.forEach((bookmark)=>{
+     const {name,url} = bookmark;
+     //Item
+     const item =document.createElement('div');
+     item.classList.add('item');
+     //close Icon
+     const closeIcon = document.createElement('i');
+     closeIcon.classList.add('fas', 'fa-times');
+     closeIcon.setAttribute('title','Delete Bookmark');
+     // this allow us to run a function similar to our event listeners in our Javascript
+     closeIcon('onclick', `deleteBookmark('${url}')`);
+     // Favicon / Link Container
+     const linkInfo = document.createElement('div');
+     linkInfo.classList.add('name');
+     // Favicon
+     const favicon = document.createElement('img');
+     favicon.setAttribute('src',`favicon.png=${url}`);
+     favicon.setAttribute('alt', 'Favicon');
+     //Link
+     const link = document.createElement('a');
+  });
+}
+
+
+
 //Fetch Bookmarks  
  // The JSON.parse() method parses a JSON string, it takses a Jason string and constructs it back into a javaScript object.
 function fetchBookmarks (){
@@ -51,8 +79,10 @@ function fetchBookmarks (){
         ];
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
      }
-    console.log(bookmarks)
+    buildBookmarks();
 }
+
+
 
 
 // Modal Event Listeners
