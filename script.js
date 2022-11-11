@@ -82,8 +82,6 @@ function validate(nameValue, urlValue) {
   });
 }
 
-
-
 //Fetch Bookmarks  
  // The JSON.parse() method parses a JSON string, it takses a Jason string and constructs it back into a javaScript object.
 function fetchBookmarks (){
