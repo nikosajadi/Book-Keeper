@@ -47,37 +47,38 @@ function validate(nameValue, urlValue) {
 }
 
 // Build Bookmarks
-function buildBookmarks() {
-    // Remove all bookmark elements , we need to reset at bookmark container
-    bookmarksContainer.textContent = '';
-    // Build items
-    bookmarks.forEach((bookmark) => {
-      const { name, url } = bookmark;
-      // Item
-      const item = document.createElement('div');
-      item.classList.add('item');
-      // Close Icon
-      const closeIcon = document.createElement('i');
-      closeIcon.classList.add('fas', 'fa-times');
-      closeIcon.setAttribute('title', 'Delete Bookmark');
-     // this allow us to run a function similar to our event listeners in our Javascript
-     closeIcon.setAttribute('onclick', `deleteBookmark('${url}')`);
+    function buildBookmarks() {
+      // Remove all bookmark elements,  we need to reset at bookmark container
+      bookmarksContainer.textContent = '';
+      // Build items
+      bookmarks.forEach((bookmark) => {
+        const { name, url } = bookmark;
+        // Item
+        const item = document.createElement('div');
+        item.classList.add('item');
+
+         // Close Icon
+        const closeIcon = document.createElement('i');
+        closeIcon.classList.add('fas', 'fa-times');
+        closeIcon.setAttribute('title', 'Delete Bookmark');
+         // this allow us to run a function similar to our event listeners in our Javascript
+        closeIcon.setAttribute('onclick', `deleteBookmark('${url}')`);
      // Favicon / Link Container
-     const linkInfo = document.createElement('div');
-     linkInfo.classList.add('name');
+        const linkInfo = document.createElement('div');
+        linkInfo.classList.add('name');
      // Favicon
-     const favicon = document.createElement('img');
-     favicon.setAttribute('src',`favicon.png=${url}`);
-     favicon.setAttribute('alt', 'Favicon');
-     //Link
-     const link = document.createElement('a');
-     link.setAttribute('href',`${url}`);
-     link.setAttribute('target', '_blank');
-     link.textContent = name;
+        const favicon = document.createElement('img');
+        favicon.setAttribute('src', `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
+        favicon.setAttribute('alt', 'Favicon');
+    // Link
+        const link = document.createElement('a');
+        link.setAttribute('href', `${url}`);
+        link.setAttribute('target', '_blank');
+        link.textContent = name;
      //Append to bookmarks container
-     linkInfo.append(favicon, link);
-     item.append(closeIcon, linkInfo);
-     bookmarksContainer.appendChild(item); 
+        linkInfo.append(favicon, link);
+        item.append(closeIcon, linkInfo);
+        bookmarksContainer.appendChild(item); 
   });
 }
 
@@ -88,25 +89,26 @@ function buildBookmarks() {
 function fetchBookmarks (){
     // the first part we should get bookmark from localStorage if available
     if (localStorage.getItem('bookmarks')) {
-        bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+      bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
     } else {
-        //creat bookmark array in LocalStorage
-        bookmarks =[
-            {
-                name : 'Jacinto Design',
-                url: 'https://jacinto.design',
-            },
-        ];
-        localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-     }
+      // Create bookmarks array in localStorage
+      bookmarks = [
+        {
+          name: 'Jacinto Design',
+          url: 'http://jacinto.design',
+        },
+      ];
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    }
     buildBookmarks();
-}
+  }
 
 // Delete Bookmark
 function deleteBookmark(url) {
     // Loop through the bookmarks array
     bookmarks.forEach((bookmark, i) => {
       if (bookmark.url === url) {
+        // Splice to shift over all the items in the array
         bookmarks.splice(i, 1);
       }
     });
@@ -133,6 +135,8 @@ function storeBookmark(e) {
         name: nameValue,
         url: urlValue,
       };
+
+      
     // we gonna pas that object to our arrey
     bookmarks.push(bookmark);
     //we can see that every things here became the string
